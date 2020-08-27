@@ -5,31 +5,31 @@ scraping the definition
 """
 
 
-import  json
-import difflib
-from difflib import SequenceMatcher
+import json
 from difflib import get_close_matches
-data = json.load(open("data.json"))
+
+data = json.load(open("076 data.json"))
+
+
 def translate(word):
     word = word.lower()
     if word in data:
 
         return data[word]
-    elif len( get_close_matches(w,data.keys)) >0:
-        yn= "Did you mean {} instead? enter Y if yes and N if no".format(get_close_matches(w,data.keys)[0])
+    elif len(get_close_matches(word, data.keys())) > 0:
+        yn = input("Did you mean {} instead? enter Y if yes and N if no".format(get_close_matches(word, data.keys())[0]))
         if yn == "Y":
-            return data[get_close_matches(w,data.keys)[0]]
-        elif yn =="N":
+            return data[get_close_matches(word, data.keys())[0]]
+        elif yn == "N":
             return "Please double check your "
         else:
             return "Sorry we don't uderstand your query "
 
 
-        return "Did you mean {} instead".format(get_close_matches(w,data.keys)[0])
     else:
         return "This word is not available now in our dectionry help us and at it from here!"
-# print()
-# print(SequenceMatcher(None,"rainn","rain").ratio())
+
+
 w = input("Enter your word please ")
 output = translate(w)
 if  type(output) == list:
