@@ -1,11 +1,3 @@
-"""
-this script for searching for a word in pre-built file "data.json" and this file contains the eaning of words and you input a word and the program return its definition
-ideas about developing this script is building web app where users enter the world and instead of using a file json fil here maybe searching different website and 
-scraping the definition
-"""
-
-
-
 import json
 from difflib import get_close_matches
 
